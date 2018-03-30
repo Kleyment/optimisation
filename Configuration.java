@@ -9,6 +9,16 @@ public class Configuration {
 		this.nbProcessor=nbProcessors;
 		this.tableauTaches=tableauTaches;
 	}
+
+	public int getNbProcessor() {
+		return nbProcessor;
+	}
+
+	public int[] getTableauTaches() {
+		return tableauTaches;
+	}
+	
+	
 	
 	
 }
