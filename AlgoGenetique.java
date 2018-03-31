@@ -20,6 +20,11 @@ public class AlgoGenetique {
 	public void mutation(Solution sol) {		
 		ArrayList<Integer>[] tableauListProc = sol.getTableauListProc();
 		int indProc1=(int)(Math.random()*tableauListProc.length);
+		
+		while (tableauListProc[indProc1].isEmpty()) {
+			indProc1=(int)(Math.random()*tableauListProc.length);
+		}
+		
 		int indProc2=(int)(Math.random()*tableauListProc.length);
 		
 		if (tableauListProc.length != 1) {
@@ -32,9 +37,12 @@ public class AlgoGenetique {
 		int indTache2=(int)(Math.random()*tableauListProc[indProc2].size());
 		
 		int tache1 = tableauListProc[indProc1].get(indTache1);
-		int tache2 = tableauListProc[indProc2].get(indTache2);
+		int tache2;
+		if (!tableauListProc[indProc2].isEmpty()) {
+			tache2 = tableauListProc[indProc2].get(indTache2);
+			tableauListProc[indProc1].set(indTache1, tache2);
+		}		
 		
-		tableauListProc[indProc1].set(indTache1, tache2);
 		tableauListProc[indProc2].set(indTache2, tache1);
 		
 		sol.setTableauListProc(tableauListProc);
