@@ -7,6 +7,10 @@ public class Main {
 		Solution s=new Solution(conf,true);
 		System.out.println(s);
 		System.out.println(s.evaluer());
+		AlgoGenetique algoGen=new AlgoGenetique(conf,0.1f,1);
+		algoGen.mutation(s);
+		System.out.println(s);
+		System.out.println(s.evaluer());
 	}
 
 }
