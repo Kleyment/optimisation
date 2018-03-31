@@ -6,9 +6,10 @@ public class Solution {
 
 	private ArrayList<Integer>[] tableauListProc;
 	private int evaluation;
-	private Configuration conf:
+	private Configuration conf;
 	
-	public Solution(ArrayList<Integer>[]tableauListProc) {
+	public Solution(Configuration conf, ArrayList<Integer>[]tableauListProc) {
+		this.conf = conf;
 		this.tableauListProc=tableauListProc;
 	}
 	
@@ -93,7 +94,7 @@ public class Solution {
 			for (int j = 0; j < tableauListProc[i].size(); j++) {
 				tab[compteur + j] = tableauListProc[i].get(j);
 			}
-			compteur = tableauListProc[i].size();
+			compteur += tableauListProc[i].size();
 		}
 		return tab;
 	}

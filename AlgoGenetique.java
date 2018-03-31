@@ -2,6 +2,7 @@ package optimisation;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AlgoGenetique {
 	
@@ -56,7 +57,10 @@ public class AlgoGenetique {
 			for (int i=0;i<coupe;i++) {
 				tableauCroisement[i]=tableauS1[i];
 			}
-			
+			for (int i=coupe;i<tableauS1.length;i++) {
+				
+				tableauCroisement[i]=tableauS1[i];
+			}
 			
 			
 			
