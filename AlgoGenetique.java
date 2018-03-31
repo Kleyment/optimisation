@@ -1,5 +1,6 @@
 package optimisation;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AlgoGenetique {
@@ -41,6 +42,25 @@ public class AlgoGenetique {
 	public Solution croisement(Solution s1, Solution s2) {
 		ArrayList<Integer>[] tableauListProcS1 = s1.getTableauListProc();
 		ArrayList<Integer>[] tableauListProcS2 = s2.getTableauListProc();
+		
+		int[] tableauS1=s1.creerTableau();
+		int[] tableauS2=s2.creerTableau();
+		
+		int[] tableauCroisement=new int[tableauS1.length];
+		
+		// [5,5,7]
+		// [5X5,7] coupe à 1
+		// [5,5X7] coupe à 2
+		if (tableauS1.length > 1) {
+			int coupe=(int)(Math.random()*(tableauS1.length-1))+1;			
+			for (int i=0;i<coupe;i++) {
+				tableauCroisement[i]=tableauS1[i];
+			}
+			
+			
+			
+			
+		}
 		
 		
 		return null;
