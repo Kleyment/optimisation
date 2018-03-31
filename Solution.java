@@ -5,8 +5,9 @@ import java.util.ArrayList;
 public class Solution {
 
 	private ArrayList<Integer>[] tableauListProc;
+	private int evaluation;
 	
-	public Solution(Configuration conf) {
+	public Solution(Configuration conf, boolean alea) {
 		int nbproc=conf.getNbProcessor();
 		tableauListProc=new ArrayList[nbproc];
 		
@@ -14,25 +15,39 @@ public class Solution {
 			tableauListProc[i]=new ArrayList<Integer>();
 		}
 		
-		int[]tableauTaches=conf.getTableauTaches();
+		int[] tableauTaches=conf.getTableauTaches();
 		int length=tableauTaches.length;
 		
-		int ratio=length/nbproc; // 5/2 ratio=2
-		int reste=length%nbproc;  // 5%2 reste=1
-
-		//On essaye d'équilibrer chaque processeur
-		for (int i=0;i<nbproc;i++) {
-			for (int j=0;j<ratio;j++) {
-				tableauListProc[i].add(tableauTaches[j+i*ratio]);
+		if (alea == false) {
+			int ratio=length/nbproc; // 5/2 ratio=2
+			int reste=length%nbproc;  // 5%2 reste=1
+			
+			//On essaye d'équilibrer chaque processeur
+			for (int i=0;i<nbproc;i++) {
+				for (int j=0;j<ratio;j++) {
+					tableauListProc[i].add(tableauTaches[j+i*ratio]);
+				}
+			}
+			
+			//On met le reste dans le dernier processeur
+			if (reste != 0) {
+				for (int j=0;j<reste;j++) {
+					tableauListProc[nbproc-1].add(tableauTaches[tableauTaches.length-(j+1)]);
+				}
+			}			
+		} else {
+			//On parcourt le tableau des tâches
+			for (int i=0;i<length;i++) {
+				int tache=tableauTaches[i];
+				
+				//On choisit un processeur aléatoire et on lui assigne une tâche
+				int randProc=(int)(Math.random()*nbproc);
+				tableauListProc[randProc].add(tache);
+						
 			}
 		}
 		
-		//On met le reste dans le dernier processeur
-		if (reste != 0) {
-			for (int j=0;j<reste;j++) {
-				tableauListProc[nbproc-1].add(tableauTaches[tableauTaches.length-(j+1)]);
-			}
-		}
+		this.evaluation=this.evaluer();
 	}
 	
 	public int evaluer() {
