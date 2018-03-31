@@ -74,6 +74,11 @@ public class AlgoGenetique {
 			ArrayList<Integer> index_restant=new ArrayList<Integer>();
 			for (int i=0;i<restant.size();i++) {
 				
+				for (int j=0;j<tableauS2.length;j++) {
+					if (tableauS2[j] == restant.get(i)) {
+						index_restant.add(j);
+					}
+				}
 			}
 			
 			
