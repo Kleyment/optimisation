@@ -59,7 +59,17 @@ public class Solution {
 		return maxSomme;
 		
 	}
+			
+	public ArrayList<Integer>[] getTableauListProc() {
+		return tableauListProc;
+	}
+
 	
+	
+	public void setTableauListProc(ArrayList<Integer>[] tableauListProc) {
+		this.tableauListProc = tableauListProc;
+	}
+
 	public String toString() {
 		StringBuilder sb=new StringBuilder();
 		for (int i=0;i<tableauListProc.length;i++) {
