@@ -41,8 +41,6 @@ public class AlgoGenetique {
 		if (!tableauListProc[indProc2].isEmpty()) {
 			tache2 = tableauListProc[indProc2].get(indTache2);
 			tableauListProc[indProc1].set(indTache1, tache2);
-		}		
-		if (!tableauListProc[indProc2].isEmpty()) {
 			tableauListProc[indProc2].set(indTache2, tache1);
 		} else {
 			tableauListProc[indProc2].add(tache1);
@@ -76,14 +74,23 @@ public class AlgoGenetique {
 			
 			ArrayList<Integer> index_restant=new ArrayList<Integer>();
 			for (int i=0;i<restant.size();i++) {
-				
 				for (int j=0;j<tableauS2.length;j++) {
-					if (tableauS2[j] == restant.get(i)) {
+					if (tableauS2[j] == restant.get(i) && !(index_restant.contains(j))) {
 						index_restant.add(j);
 					}
 				}
 			}
 			
+			ArrayList<Integer> restant_ordonne=new ArrayList<Integer>();
+			int indexmin=Integer.MAX_VALUE;
+			/*
+			for (int i=0;j<index_restant.size();i++) {
+				for (int i=0;i<index_restant.size();i++) {
+					if (index_restant<indexmin) {
+						
+					}
+				}
+			}*/
 			
 			
 		}

@@ -3,7 +3,7 @@ package optimisation;
 public class Main {
 
 	public static void main(String[] args) {
-		Configuration conf=new Configuration(6, 5,4,5,3,6,7);
+		Configuration conf=new Configuration(8, 5,4,5,3,6,7);
 		Solution s=new Solution(conf,true);
 		System.out.println(s);
 		System.out.println(s.evaluer());
