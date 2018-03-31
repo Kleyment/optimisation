@@ -42,9 +42,12 @@ public class AlgoGenetique {
 			tache2 = tableauListProc[indProc2].get(indTache2);
 			tableauListProc[indProc1].set(indTache1, tache2);
 		}		
-		
-		tableauListProc[indProc2].set(indTache2, tache1);
-		
+		if (!tableauListProc[indProc2].isEmpty()) {
+			tableauListProc[indProc2].set(indTache2, tache1);
+		} else {
+			tableauListProc[indProc2].add(tache1);
+			tableauListProc[indProc1].remove(indTache1);
+		}
 		sol.setTableauListProc(tableauListProc);
 	}	
 	
