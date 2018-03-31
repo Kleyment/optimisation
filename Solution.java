@@ -6,12 +6,15 @@ public class Solution {
 
 	private ArrayList<Integer>[] tableauListProc;
 	private int evaluation;
+	private Configuration conf:
 	
 	public Solution(ArrayList<Integer>[]tableauListProc) {
 		this.tableauListProc=tableauListProc;
 	}
 	
 	public Solution(Configuration conf, boolean alea) {
+		
+		this.conf = conf;
 		int nbproc=conf.getNbProcessor();
 		tableauListProc=new ArrayList[nbproc];
 		
@@ -84,7 +87,15 @@ public class Solution {
 	}
 	
 	public int[] creerTableau() {
-		
+		int[] tab = new int[conf.getTableauTaches().length];
+		int compteur = 0;
+		for (int i = 0; i < tableauListProc.length; i++) {			
+			for (int j = 0; j < tableauListProc[i].size(); j++) {
+				tab[compteur + j] = tableauListProc[i].get(j);
+			}
+			compteur = tableauListProc[i].size();
+		}
+		return tab;
 	}
 
 	
