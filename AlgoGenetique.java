@@ -36,8 +36,15 @@ public class AlgoGenetique {
 		tableauListProc[indProc2].set(indTache2, tache1);
 		
 		sol.setTableauListProc(tableauListProc);
-	}
+	}	
 	
+	public Solution croisement(Solution s1, Solution s2) {
+		ArrayList<Integer>[] tableauListProcS1 = s1.getTableauListProc();
+		ArrayList<Integer>[] tableauListProcS2 = s2.getTableauListProc();
+		
+		
+		return null;
+	}
 
 }
 

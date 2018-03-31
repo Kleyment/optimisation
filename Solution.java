@@ -7,6 +7,10 @@ public class Solution {
 	private ArrayList<Integer>[] tableauListProc;
 	private int evaluation;
 	
+	public Solution(ArrayList<Integer>[]tableauListProc) {
+		this.tableauListProc=tableauListProc;
+	}
+	
 	public Solution(Configuration conf, boolean alea) {
 		int nbproc=conf.getNbProcessor();
 		tableauListProc=new ArrayList[nbproc];
@@ -78,8 +82,11 @@ public class Solution {
 	public ArrayList<Integer>[] getTableauListProc() {
 		return tableauListProc;
 	}
-
 	
+	public int[] creerTableau() {
+		
+	}
+
 	
 	public void setTableauListProc(ArrayList<Integer>[] tableauListProc) {
 		this.tableauListProc = tableauListProc;
