@@ -20,12 +20,14 @@ public class Solution {
 		int ratio=length/nbproc; // 5/2 ratio=2
 		int reste=length%nbproc;  // 5%2 reste=1
 
+		//On essaye d'équilibrer chaque processeur
 		for (int i=0;i<nbproc;i++) {
 			for (int j=0;j<ratio;j++) {
 				tableauListProc[i].add(tableauTaches[j+i*ratio]);
 			}
 		}
 		
+		//On met le reste dans le dernier processeur
 		if (reste != 0) {
 			for (int j=0;j<reste;j++) {
 				tableauListProc[nbproc-1].add(tableauTaches[tableauTaches.length-(j+1)]);
@@ -47,6 +49,7 @@ public class Solution {
 			}
 		}
 		
+		//On retourne la somme maximale
 		int maxSomme=0;
 		for (int i=0;i<tableauListProc.length;i++) {
 			if (somme[i] > maxSomme) {
