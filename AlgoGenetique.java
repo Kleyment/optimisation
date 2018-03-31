@@ -57,9 +57,15 @@ public class AlgoGenetique {
 			for (int i=0;i<coupe;i++) {
 				tableauCroisement[i]=tableauS1[i];
 			}
+			
+			ArrayList<Integer> restant=new ArrayList<Integer>();
 			for (int i=coupe;i<tableauS1.length;i++) {
+				restant.add(tableauCroisement[i]);
+			}
+			
+			ArrayList<Integer> index_restant=new ArrayList<Integer>();
+			for (int i=0;i<restant.size();i++) {
 				
-				tableauCroisement[i]=tableauS1[i];
 			}
 			
 			
