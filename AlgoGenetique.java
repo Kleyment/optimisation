@@ -23,41 +23,61 @@ public class AlgoGenetique {
 		
 	}
 	
-	public void boucle(int iteration) {
-		int selection1=(int)(Math.random()*this.taillePopulation);
-		int selection2=(int)(Math.random()*this.taillePopulation);
-		
-		while (selection2 == selection1) {
-			selection2=(int)(Math.random()*this.taillePopulation);
+	public Solution boucle(int iteration) {
+		for (int j=0;j<iteration;j++) {
+			int selection1=(int)(Math.random()*this.taillePopulation);
+			int selection2=(int)(Math.random()*this.taillePopulation);
+			
+			while (selection2 == selection1) {
+				selection2=(int)(Math.random()*this.taillePopulation);
+			}
+			
+			Solution p1=this.population.get(selection1);
+			Solution p2=this.population.get(selection1);
+			
+			Solution e1=AlgoGenetique.croisement(p1,p2);
+			Solution e2=AlgoGenetique.croisement(p2,p1);
+			
+			if (probMutation>=Math.random()) {
+				AlgoGenetique.mutation(e1);
+			}
+			
+			if (probMutation>=Math.random()) {
+				AlgoGenetique.mutation(e2);
+			}
+			
+			this.population.add(e1);
+			this.population.add(e2);
+			
+			int min=Integer.MAX_VALUE;
+			int indexmin=-1;
+			for (int i=0;i<this.population.size();i++) {
+				if (this.population.get(i).getEvaluation() < min) {
+					indexmin=i;
+					min=this.population.get(i).getEvaluation();
+				}
+			}
+			this.population.remove(indexmin);
+			
+			min=Integer.MAX_VALUE;
+			indexmin=-1;
+			for (int i=0;i<this.population.size();i++) {
+				if (this.population.get(i).getEvaluation() < min) {
+					indexmin=i;
+					min=this.population.get(i).getEvaluation();
+				}
+			}
+			this.population.remove(indexmin);
 		}
-		
-		Solution p1=this.population.get(selection1);
-		Solution p2=this.population.get(selection1);
-		
-		Solution e1=AlgoGenetique.croisement(p1,p2);
-		Solution e2=AlgoGenetique.croisement(p2,p1);
-		
-		if (probMutation>=Math.random()) {
-			AlgoGenetique.mutation(e1);
-		}
-		
-		if (probMutation>=Math.random()) {
-			AlgoGenetique.mutation(e2);
-		}
-		
-		this.population.add(e1);
-		this.population.add(e2);
-		
-		int min=Integer.MAX_VALUE;
-		int indexmin;
+		int max=Integer.MIN_VALUE;
+		int indexmax=-1;
 		for (int i=0;i<this.population.size();i++) {
-			if (this.population.get(i).getEvaluation() < min) {
-				i=indexmin;
-				
+			if (this.population.get(i).getEvaluation() > max) {
+				indexmax=i;
+				max=this.population.get(i).getEvaluation();
 			}
 		}
-		
-		
+		return this.population.get(indexmax);
 	}
 	
 	public static void mutation(Solution sol) {		
@@ -100,17 +120,17 @@ public class AlgoGenetique {
 		int[] tableauS1=s1.creerTableau();
 		int[] tableauS2=s2.creerTableau();
 		
-		System.out.print("S1[");
+		/*System.out.print("S1[");
 		for (int i=0;i<tableauS1.length;i++) {
 			System.out.print(tableauS1[i]+",");
 		}
-		System.out.println("]\n");
+		System.out.println("]\n");*/
 		
-		System.out.print("S2[");
+		/*System.out.print("S2[");
 		for (int i=0;i<tableauS1.length;i++) {
 			System.out.print(tableauS2[i]+",");
 		}
-		System.out.println("]\n");
+		System.out.println("]\n");*/
 		
 		int[] tableauCroisement=new int[tableauS1.length];
 		
@@ -120,7 +140,7 @@ public class AlgoGenetique {
 		if (tableauS1.length > 1) {
 			
 			int coupe=(int)(Math.random()*(tableauS1.length-1))+1;
-			System.out.println("coupe : "+coupe);
+			//System.out.println("coupe : "+coupe);
 			
 			for (int i=0;i<coupe;i++) {
 				tableauCroisement[i]=tableauS1[i];
@@ -129,7 +149,7 @@ public class AlgoGenetique {
 			ArrayList<Integer> restant=new ArrayList<Integer>();
 			for (int i=coupe;i<tableauS1.length;i++) {
 				restant.add(tableauS1[i]);
-				System.out.println("restant.add("+tableauS1[i]+");");
+				//System.out.println("restant.add("+tableauS1[i]+");");
 			}
 			
 			ArrayList<Integer> index_restant=new ArrayList<Integer>();
@@ -137,7 +157,7 @@ public class AlgoGenetique {
 				for (int j=0;j<tableauS2.length;j++) {
 					if (tableauS2[j] == restant.get(i) && !(index_restant.contains(j))) {
 						index_restant.add(j);
-						System.out.println("index_restant.add("+j+");");
+						//System.out.println("index_restant.add("+j+");");
 						break;
 					}
 				}
@@ -171,11 +191,11 @@ public class AlgoGenetique {
 				j++;
 			}
 						
-			System.out.print("S3[");
+			/*System.out.print("S3[");
 			for (int i=0;i<tableauS1.length;i++) {
 				System.out.print(tableauCroisement[i]+",");
 			}
-			System.out.println("]\n");
+			System.out.println("]\n");*/
 		}	
 		ArrayList<Integer>[] tableauListProc = new ArrayList[s1.getTableauListProc().length];
 		Configuration conf=s1.getConf();
