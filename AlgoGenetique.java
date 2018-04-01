@@ -132,24 +132,31 @@ public class AlgoGenetique {
 				System.out.print(tableauCroisement[i]+",");
 			}
 			System.out.println("]\n");
-			
-			ArrayList<Integer>[] tableauListProc = new ArrayList[s1.getTableauListProc().length];
-			Configuration conf=s1.getConf();
-			
+		}	
+		ArrayList<Integer>[] tableauListProc = new ArrayList[s1.getTableauListProc().length];
+		Configuration conf=s1.getConf();
+		
+		if (tableauS1.length > 1) {
 			int k=0;
-			for (j = 0; j < tableauListProc.length; j++) {
+			for ( int j = 0; j < tableauListProc.length; j++) {
 				tableauListProc[j] = new ArrayList<Integer>();
 				for (int i=0;i<s1.getTableauListProc()[j].size();i++) {
 					tableauListProc[j].add(tableauCroisement[k]);
 					k++;
 				}
 			}
-
-			return new Solution(conf,tableauListProc);
+		} else {
+			int k=0;
+			for ( int j = 0; j < tableauListProc.length; j++) {
+				tableauListProc[j] = new ArrayList<Integer>();
+				for (int i=0;i<s1.getTableauListProc()[j].size();i++) {
+					tableauListProc[j].add(tableauS1[k]);
+					k++;
+				}
+			}
 		}
-		
-		
-		return null;
+		return new Solution(conf,tableauListProc);
+
 	}
 
 }

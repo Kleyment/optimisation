@@ -1,6 +1,8 @@
 package optimisation;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Solution {
 
@@ -124,6 +126,34 @@ public class Solution {
 			compteur += tableauListProc[i].size();
 		}
 		return tab;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (! (o instanceof Solution)) {
+			return false;
+		}
+		Solution sol = (Solution) o;
+		boolean equals = true;
+		ArrayList<Integer> list1, list2;
+		for (int i = 0; i < this.tableauListProc.length; i++) {
+			list1 = new ArrayList<Integer>(tableauListProc[i]);
+			Collections.sort(list1);
+			list2 = new ArrayList<Integer>(sol.getTableauListProc()[i]);
+			Collections.sort(list2);
+			if (!(list1.size() == list2.size())) {
+				equals = false;
+				break;
+			} else {
+				for (int j = 0; j < list1.size(); j++) {	
+					if (list1.get(j) != list2.get(j)) {
+						equals = false;
+						break;
+					}
+				}
+			}
+		}
+		return equals;
 	}
 
 	public String toString() {
