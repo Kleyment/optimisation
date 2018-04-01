@@ -58,6 +58,25 @@ public class Solution {
 		this.evaluation=this.evaluer();
 	}
 	
+	public Solution (Solution sol) {
+		int nbProc = sol.conf.getNbProcessor();
+		int[] tableauTache = new int[sol.conf.getTableauTaches().length];
+		for (int i = 0; i<tableauTache.length; i++) {
+			tableauTache[i] = sol.conf.getTableauTaches()[i];
+		}
+		Configuration config = new Configuration(nbProc, tableauTache);
+		this.conf = config;
+		
+		ArrayList<Integer>[] tableauListProc = new ArrayList[sol.getTableauListProc().length];
+		for (int j = 0; j < tableauListProc.length; j++) {
+			tableauListProc[j] = new ArrayList<Integer>();
+			for (int k : sol.getTableauListProc()[j]) {
+				tableauListProc[j].add(k);
+			}
+		}		
+		this.tableauListProc = tableauListProc;
+	}
+	
 	public int evaluer() {
 		int[] somme=new int[tableauListProc.length];
 		//On initialise les sommes (une pour chaque processeur) à 0
