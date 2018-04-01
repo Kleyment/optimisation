@@ -10,6 +10,10 @@ public class Solution {
 	private int evaluation;
 	private Configuration conf;
 	
+	public int getEvaluation() {
+		return evaluation;
+	}
+
 	public Configuration getConf() {
 		return conf;
 	}
@@ -25,6 +29,7 @@ public class Solution {
 	public Solution(Configuration conf, ArrayList<Integer>[]tableauListProc) {
 		this.conf = conf;
 		this.tableauListProc=tableauListProc;
+		this.evaluer();
 	}
 	
 	public Solution(Configuration conf, boolean alea) {
@@ -69,7 +74,7 @@ public class Solution {
 			}
 		}
 		
-		this.evaluation=this.evaluer();
+		this.evaluer();
 	}
 	
 	public Solution (Solution sol) {
@@ -89,9 +94,10 @@ public class Solution {
 			}
 		}		
 		this.tableauListProc = tableauListProc;
+		this.evaluer();
 	}
 	
-	public int evaluer() {
+	public void evaluer() {
 		int[] somme=new int[tableauListProc.length];
 		//On initialise les sommes (une pour chaque processeur) à 0
 		for (int i=0;i<tableauListProc.length;i++) {
@@ -112,7 +118,7 @@ public class Solution {
 				maxSomme=somme[i];
 			}
 		}
-		return maxSomme;
+		this.evaluation=maxSomme;
 		
 	}
 	

@@ -15,6 +15,49 @@ public class AlgoGenetique {
 		this.config=config;
 		this.probMutation = probMutation;
 		this.taillePopulation = taillePopulation;
+		this.population=new ArrayList<Solution>();
+		
+		for (int i=0;i<this.taillePopulation;i++) {
+			this.population.add(new Solution(this.config,true));
+		}
+		
+	}
+	
+	public void boucle(int iteration) {
+		int selection1=(int)(Math.random()*this.taillePopulation);
+		int selection2=(int)(Math.random()*this.taillePopulation);
+		
+		while (selection2 == selection1) {
+			selection2=(int)(Math.random()*this.taillePopulation);
+		}
+		
+		Solution p1=this.population.get(selection1);
+		Solution p2=this.population.get(selection1);
+		
+		Solution e1=AlgoGenetique.croisement(p1,p2);
+		Solution e2=AlgoGenetique.croisement(p2,p1);
+		
+		if (probMutation>=Math.random()) {
+			AlgoGenetique.mutation(e1);
+		}
+		
+		if (probMutation>=Math.random()) {
+			AlgoGenetique.mutation(e2);
+		}
+		
+		this.population.add(e1);
+		this.population.add(e2);
+		
+		int min=Integer.MAX_VALUE;
+		int indexmin;
+		for (int i=0;i<this.population.size();i++) {
+			if (this.population.get(i).getEvaluation() < min) {
+				i=indexmin;
+				
+			}
+		}
+		
+		
 	}
 	
 	public static void mutation(Solution sol) {		
@@ -47,6 +90,7 @@ public class AlgoGenetique {
 			tableauListProc[indProc1].remove(indTache1);
 		}
 		sol.setTableauListProc(tableauListProc);
+		sol.evaluer();
 	}	
 	
 	public static Solution croisement(Solution s1, Solution s2) {
