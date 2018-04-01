@@ -8,6 +8,18 @@ public class Solution {
 	private int evaluation;
 	private Configuration conf;
 	
+	public Configuration getConf() {
+		return conf;
+	}
+
+	public ArrayList<Integer>[] getTableauListProc() {
+		return tableauListProc;
+	}
+	
+	public void setTableauListProc(ArrayList<Integer>[] tableauListProc) {
+		this.tableauListProc = tableauListProc;
+	}
+	
 	public Solution(Configuration conf, ArrayList<Integer>[]tableauListProc) {
 		this.conf = conf;
 		this.tableauListProc=tableauListProc;
@@ -101,10 +113,6 @@ public class Solution {
 		return maxSomme;
 		
 	}
-			
-	public ArrayList<Integer>[] getTableauListProc() {
-		return tableauListProc;
-	}
 	
 	public int[] creerTableau() {
 		int[] tab = new int[conf.getTableauTaches().length];
@@ -116,11 +124,6 @@ public class Solution {
 			compteur += tableauListProc[i].size();
 		}
 		return tab;
-	}
-
-	
-	public void setTableauListProc(ArrayList<Integer>[] tableauListProc) {
-		this.tableauListProc = tableauListProc;
 	}
 
 	public String toString() {

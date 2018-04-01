@@ -5,7 +5,15 @@ public class Main {
 	public static void main(String[] args) {
 		Configuration conf=new Configuration(2, 5,4,5,3,6,7);
 		Solution s=new Solution(conf,true);
+		Solution s2=new Solution(conf,true);
+		
 		System.out.println(s);
+		System.out.println(s2);
+		
+		Solution s3=AlgoGenetique.croisement(s, s2);
+		System.out.println(s3);
+		
+		/*System.out.println(s);
 		System.out.println(s.evaluer());
 		Solution s2 = new Solution(s);
 		System.out.println("s2 : "+ s2);
@@ -17,7 +25,7 @@ public class Main {
 		algoGen.mutation(s);
 		System.out.println(s);
 		System.out.println(s.evaluer());
-		System.out.println("s2 :"+ s2);
+		System.out.println("s2 :"+ 	);*/
 	}
 
 }
