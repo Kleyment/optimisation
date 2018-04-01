@@ -49,35 +49,35 @@ public class AlgoGenetique {
 			this.population.add(e1);
 			this.population.add(e2);
 			
-			int min=Integer.MAX_VALUE;
-			int indexmin=-1;
+			int max=Integer.MIN_VALUE;
+			int indexmax=-1;
 			for (int i=0;i<this.population.size();i++) {
-				if (this.population.get(i).getEvaluation() < min) {
-					indexmin=i;
-					min=this.population.get(i).getEvaluation();
+				if (this.population.get(i).getEvaluation() > max) {
+					indexmax=i;
+					max=this.population.get(i).getEvaluation();
 				}
 			}
-			this.population.remove(indexmin);
+			this.population.remove(indexmax);
 			
-			min=Integer.MAX_VALUE;
-			indexmin=-1;
+			max=Integer.MIN_VALUE;
+			indexmax=-1;
 			for (int i=0;i<this.population.size();i++) {
-				if (this.population.get(i).getEvaluation() < min) {
-					indexmin=i;
-					min=this.population.get(i).getEvaluation();
+				if (this.population.get(i).getEvaluation() > max) {
+					indexmax=i;
+					max=this.population.get(i).getEvaluation();
 				}
 			}
-			this.population.remove(indexmin);
+			this.population.remove(indexmax);
 		}
-		int max=Integer.MIN_VALUE;
-		int indexmax=-1;
+		int min=Integer.MAX_VALUE;
+		int indexmin=-1;
 		for (int i=0;i<this.population.size();i++) {
-			if (this.population.get(i).getEvaluation() > max) {
-				indexmax=i;
-				max=this.population.get(i).getEvaluation();
+			if (this.population.get(i).getEvaluation() < min) {
+				indexmin=i;
+				min=this.population.get(i).getEvaluation();
 			}
 		}
-		return this.population.get(indexmax);
+		return this.population.get(indexmin);
 	}
 	
 	public static void mutation(Solution sol) {		
