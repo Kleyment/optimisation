@@ -82,16 +82,22 @@ public class AlgoGenetique {
 			}
 			
 			ArrayList<Integer> restant_ordonne=new ArrayList<Integer>();
-			int indexmin=Integer.MAX_VALUE;
-			/*
-			for (int i=0;j<index_restant.size();i++) {
+			
+			while (!restant.isEmpty()) {
+				//La valeur dans index_restant
+				int indexmin=index_restant.get(0);
+				//La clé dans index_restant
+				int key_in_index_restant=0;
 				for (int i=0;i<index_restant.size();i++) {
-					if (index_restant<indexmin) {
-						
+					if (index_restant.get(i)<indexmin) {
+						indexmin=index_restant.get(i);
+						key_in_index_restant=i;
 					}
 				}
-			}*/
-			
+				restant_ordonne.add(restant.get(key_in_index_restant));
+				restant.remove(key_in_index_restant);
+			}
+						
 			
 		}
 		
