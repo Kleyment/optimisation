@@ -37,7 +37,7 @@ public class RechercheTabou {
 			eval = voisin1.getEvaluation();
 			solutionActuelle = voisin1;
 			for (Solution v : listeVoisins) {
-				if (v.getEvaluation() > eval) {
+				if (v.getEvaluation() < eval) {
 					eval = v.getEvaluation();
 					solutionActuelle = v;
 				}
@@ -46,6 +46,7 @@ public class RechercheTabou {
 			for (Solution s : listeTabou) {
 				if (solutionActuelle.equals(s)) {
 					equals = true;
+					break;
 				}
 			}
 			if (!equals) {
@@ -55,5 +56,9 @@ public class RechercheTabou {
 			equals = false;
 		}
 	}
+
+	public Solution getSolution() {
+		return solution;
+	}	
 	
 }
