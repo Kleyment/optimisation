@@ -16,14 +16,28 @@ public class RecuitSimule {
 		Solution copie_solution=new Solution(this.solution);
 		AlgoGenetique.mutation(copie_solution);
 		
-		int variationEnergie=copie_solution.getEvaluation()-this.solution.getEvaluation();
+		float variationEnergie=copie_solution.getEvaluation()-this.solution.getEvaluation();
 		
-		if (variationEnergie < 0) {
+		if (variationEnergie <= 0) {
 			this.solution=copie_solution;
 		} else {
-			System.out.println(Math.exp(-variationEnergie/temperatureDep));
+			double proba=Math.exp(-variationEnergie/temperatureDep);
+			double random=Math.random();
+			
+			if (random < proba) {
+				this.solution=copie_solution;
+			}
 		}
-		
+	}
+	
+	public Solution boucle(int iteration) {
+		for (int i=0;i<iteration;i++) {
+			this.variationEnergie();
+			if (this.solution.getEvaluation() == conf.evaluationMinimale()) {
+				break;
+			}
+		}
+		return this.solution;
 	}
 	
 	

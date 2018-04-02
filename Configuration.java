@@ -18,6 +18,15 @@ public class Configuration {
 		return tableauTaches;
 	}
 	
+	//L'évaluation minimale possible (pas toujours atteignable)
+	public int evaluationMinimale() {
+		int somme=0;
+		for (int i=0;i<tableauTaches.length;i++) {
+			somme+=tableauTaches[i];
+		}
+		return (somme/nbProcessor);
+	}
+	
 	
 	
 	

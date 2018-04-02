@@ -9,8 +9,10 @@ public class Main {
 		Solution s=new Solution(conf,true);
 		Solution s2=new Solution(conf,true);
 		
-		RecuitSimule recuitS=new RecuitSimule(conf,100);
-		recuitS.variationEnergie();
+		RecuitSimule recuitS=new RecuitSimule(conf,1);
+		Solution sr=recuitS.boucle(100);
+		System.out.println(sr);
+		System.out.println(sr.getEvaluation());
 		/*AlgoGenetique algoGen=new AlgoGenetique(conf,0.1f,100);
 		Solution s=algoGen.boucle(100);
 		System.out.println(s);
