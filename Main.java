@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-		Configuration conf=new Configuration(4, 1,2,3,4,5,6,7);
+		Configuration conf=new Configuration(5, 1,2,3,4,5,6,7,10,12,14);
 		/*Solution s=new Solution(conf,true);
 		Solution s2=new Solution(conf,true);*/
 		
