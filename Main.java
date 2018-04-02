@@ -6,13 +6,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		Configuration conf=new Configuration(5, 1,2,3,4,5,6,7,10,12,14);
-		/*Solution s=new Solution(conf,true);
-		Solution s2=new Solution(conf,true);*/
+		Solution s=new Solution(conf,true);
+		Solution s2=new Solution(conf,true);
 		
-		AlgoGenetique algoGen=new AlgoGenetique(conf,0.1f,100);
+		RecuitSimule recuitS=new RecuitSimule(conf,100);
+		recuitS.variationEnergie();
+		/*AlgoGenetique algoGen=new AlgoGenetique(conf,0.1f,100);
 		Solution s=algoGen.boucle(100);
 		System.out.println(s);
-		System.out.println(s.getEvaluation());
+		System.out.println(s.getEvaluation());*/
 		/*System.out.println(s);
 		System.out.println(s.evaluer());
 		Solution s2 = new Solution(s);
