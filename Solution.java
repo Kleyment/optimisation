@@ -10,22 +10,6 @@ public class Solution {
 	private int evaluation;
 	private Configuration conf;
 	
-	public int getEvaluation() {
-		return evaluation;
-	}
-
-	public Configuration getConf() {
-		return conf;
-	}
-
-	public ArrayList<Integer>[] getTableauListProc() {
-		return tableauListProc;
-	}
-	
-	public void setTableauListProc(ArrayList<Integer>[] tableauListProc) {
-		this.tableauListProc = tableauListProc;
-	}
-	
 	public Solution(Configuration conf, ArrayList<Integer>[]tableauListProc) {
 		this.conf = conf;
 		this.tableauListProc=tableauListProc;
@@ -95,6 +79,22 @@ public class Solution {
 		}		
 		this.tableauListProc = tableauListProc;
 		this.evaluer();
+	}
+	
+	public int getEvaluation() {
+		return evaluation;
+	}
+
+	public Configuration getConf() {
+		return conf;
+	}
+
+	public ArrayList<Integer>[] getTableauListProc() {
+		return tableauListProc;
+	}
+	
+	public void setTableauListProc(ArrayList<Integer>[] tableauListProc) {
+		this.tableauListProc = tableauListProc;
 	}
 	
 	public void evaluer() {

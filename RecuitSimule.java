@@ -33,13 +33,16 @@ public class RecuitSimule {
 	public Solution boucle(int iteration) {
 		for (int i=0;i<iteration;i++) {
 			this.variationEnergie();
-			if (this.solution.getEvaluation() == conf.evaluationMinimale()) {
+			if ((this.solution.getEvaluation() == conf.getEvaluationMinimale())) {
 				break;
 			}
 		}
 		return this.solution;
 	}
-	
+
+	public Solution getSolution() {
+		return solution;
+	}
 	
 
 }

@@ -4,10 +4,16 @@ public class Configuration {
 
 	private int nbProcessor;
 	private int[] tableauTaches;
+	private int evaluationMinimale;
 	
 	public Configuration(int nbProcessors, int... tableauTaches) {
 		this.nbProcessor=nbProcessors;
 		this.tableauTaches=tableauTaches;
+		this.evaluationMinimale();
+	}
+
+	public int getEvaluationMinimale() {
+		return evaluationMinimale;
 	}
 
 	public int getNbProcessor() {
@@ -19,12 +25,12 @@ public class Configuration {
 	}
 	
 	//L'évaluation minimale possible (pas toujours atteignable)
-	public int evaluationMinimale() {
+	public void evaluationMinimale() {
 		int somme=0;
 		for (int i=0;i<tableauTaches.length;i++) {
 			somme+=tableauTaches[i];
 		}
-		return (somme/nbProcessor);
+		this.evaluationMinimale=(somme/nbProcessor);
 	}
 	
 	

@@ -23,6 +23,22 @@ public class AlgoGenetique {
 		
 	}
 	
+	public Solution getIndividu(int i) {
+		return population.get(i);
+	}
+	
+	public Solution getMeilleurIndividu() {
+		int min=Integer.MAX_VALUE;
+		int indexmin=-1;
+		for (int i=0;i<this.population.size();i++) {
+			if (this.population.get(i).getEvaluation() < min) {
+				indexmin=i;
+				min=this.population.get(i).getEvaluation();
+			}
+		}
+		return this.population.get(indexmin);
+	}
+	
 	public Solution boucle(int iteration) {
 		for (int j=0;j<iteration;j++) {
 			int selection1=(int)(Math.random()*this.taillePopulation);
@@ -120,18 +136,6 @@ public class AlgoGenetique {
 		int[] tableauS1=s1.creerTableau();
 		int[] tableauS2=s2.creerTableau();
 		
-		/*System.out.print("S1[");
-		for (int i=0;i<tableauS1.length;i++) {
-			System.out.print(tableauS1[i]+",");
-		}
-		System.out.println("]\n");*/
-		
-		/*System.out.print("S2[");
-		for (int i=0;i<tableauS1.length;i++) {
-			System.out.print(tableauS2[i]+",");
-		}
-		System.out.println("]\n");*/
-		
 		int[] tableauCroisement=new int[tableauS1.length];
 		
 		// [5,5,7]
@@ -140,7 +144,6 @@ public class AlgoGenetique {
 		if (tableauS1.length > 1) {
 			
 			int coupe=(int)(Math.random()*(tableauS1.length-1))+1;
-			//System.out.println("coupe : "+coupe);
 			
 			for (int i=0;i<coupe;i++) {
 				tableauCroisement[i]=tableauS1[i];
@@ -149,7 +152,6 @@ public class AlgoGenetique {
 			ArrayList<Integer> restant=new ArrayList<Integer>();
 			for (int i=coupe;i<tableauS1.length;i++) {
 				restant.add(tableauS1[i]);
-				//System.out.println("restant.add("+tableauS1[i]+");");
 			}
 			
 			ArrayList<Integer> index_restant=new ArrayList<Integer>();
@@ -157,7 +159,6 @@ public class AlgoGenetique {
 				for (int j=0;j<tableauS2.length;j++) {
 					if (tableauS2[j] == restant.get(i) && !(index_restant.contains(j))) {
 						index_restant.add(j);
-						//System.out.println("index_restant.add("+j+");");
 						break;
 					}
 				}
@@ -191,11 +192,6 @@ public class AlgoGenetique {
 				j++;
 			}
 						
-			/*System.out.print("S3[");
-			for (int i=0;i<tableauS1.length;i++) {
-				System.out.print(tableauCroisement[i]+",");
-			}
-			System.out.println("]\n");*/
 		}	
 		ArrayList<Integer>[] tableauListProc = new ArrayList[s1.getTableauListProc().length];
 		Configuration conf=s1.getConf();
