@@ -36,7 +36,7 @@ public class Main {
 			System.out.println("Effectuer un nombre d'iteration (i)");
 			System.out.println("Voir un individu (v)");
 			System.out.println("Voir le meilleur individu (m)");
-			System.out.println("Quitter (q)");
+			System.out.println("Retour (r)");
 			
 			char code=sc.next().charAt(0);
 			switch (code) {
@@ -65,7 +65,7 @@ public class Main {
 				System.out.println(s);
 				System.out.println(s.getEvaluation());
 				break;
-			case 'q':
+			case 'r':
 				return;
 			default:
 				return;
@@ -85,7 +85,7 @@ public class Main {
 			System.out.println("Changer la température (t)");
 			System.out.println("Effectuer un nombre d'iteration (i)");
 			System.out.println("Voir la solution actuelle (s)");
-			System.out.println("Quitter (q)");
+			System.out.println("Retour (r)");
 			
 			char code=sc.next().charAt(0);
 			switch (code) {
@@ -104,7 +104,7 @@ public class Main {
 				System.out.println(s);
 				System.out.println(s.getEvaluation());
 				break;
-			case 'q':
+			case 'r':
 				return;
 			default:
 				return;
@@ -124,7 +124,7 @@ public class Main {
 			System.out.println("Changer la taille de la liste (t)");
 			System.out.println("Effectuer des mouvements (m)");
 			System.out.println("Voir la solution actuelle (s)");
-			System.out.println("Quitter (q)");
+			System.out.println("Retour (r)");
 			
 			char code=sc.next().charAt(0);
 			switch (code) {
@@ -143,7 +143,7 @@ public class Main {
 				System.out.println(s);
 				System.out.println(s.getEvaluation());
 				break;
-			case 'q':
+			case 'r':
 				return;
 			default:
 				return;
