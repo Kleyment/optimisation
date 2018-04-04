@@ -16,12 +16,13 @@ public class RechercheTabou {
 		this.tailleListe = tailleListe;
 	}
 	
-	public void mouvement() {
+	public void mouvement(int iteration) {
 		boolean equals = false;
 		ArrayList<Solution> listeVoisins = new ArrayList<Solution>();
 		Solution solutionActuelle = solution;
 		int eval;
-		while (listeTabou.size() < tailleListe) {
+		int i=0;
+		while ((listeTabou.size() < tailleListe) && (i<iteration)) {
 			Solution voisin1=new Solution(this.solution);
 			AlgoGenetique.mutation(voisin1);
 			listeVoisins.add(voisin1);
@@ -54,6 +55,7 @@ public class RechercheTabou {
 				solution = solutionActuelle;
 			}
 			equals = false;
+			i++;
 		}
 	}
 

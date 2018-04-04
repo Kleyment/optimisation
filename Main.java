@@ -35,6 +35,7 @@ public class Main {
 			System.out.println("Que souhaiter vous faire ?");
 			System.out.println("Effectuer un nombre d'iteration (i)");
 			System.out.println("Voir un individu (v)");
+			System.out.println("Voir le meilleur individu (m)");
 			System.out.println("Quitter (q)");
 			
 			char code=sc.next().charAt(0);
@@ -58,6 +59,11 @@ public class Main {
 						System.out.println("Numéro invalide");
 					}
 				}
+				break;
+			case 'm':
+				Solution s=algoGen.getMeilleurIndividu();
+				System.out.println(s);
+				System.out.println(s.getEvaluation());
 				break;
 			case 'q':
 				return;
@@ -128,7 +134,9 @@ public class Main {
 				rechercheTab=new RechercheTabou(conf,tailleListe);
 				break;
 			case 'm':
-				rechercheTab.mouvement();
+				System.out.println("Veuillez choisir le nombre d'itérations");
+				int iteration=sc.nextInt();
+				rechercheTab.mouvement(iteration);
 				break;
 			case 's':
 				Solution s=rechercheTab.getSolution();
@@ -191,8 +199,14 @@ public class Main {
 				return;
 			}
 		}
-		
-		
+
+		/*
+		Configuration conf=new Configuration(2,3,4,5,6,7,8);
+		RechercheTabou rechercheTab=new RechercheTabou(conf,100);
+		rechercheTab.mouvement(100);
+		Solution s=rechercheTab.getSolution();
+		System.out.println(s);
+		System.out.println(s.getEvaluation());
 		
 		
 		/*Solution s=new Solution(conf,true);

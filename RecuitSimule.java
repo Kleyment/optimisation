@@ -36,6 +36,9 @@ public class RecuitSimule {
 			if ((this.solution.getEvaluation() == conf.getEvaluationMinimale())) {
 				break;
 			}
+			if (temperatureDep > 1) {
+				temperatureDep--;
+			}
 		}
 		return this.solution;
 	}
