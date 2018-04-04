@@ -25,7 +25,7 @@ public class Main {
 		float probMut;
 		System.out.println("Veuillez choisir la taille de la population : ");
 		taillepopulation=sc.nextInt();
-		System.out.println("Veuillez choisir la probabilité de mutation : ");
+		System.out.println("Veuillez choisir la probabilité de mutation (utiliser , et pas .) : ");
 		probMut=sc.nextFloat();
 		
 		AlgoGenetique algoGen=new AlgoGenetique(conf,probMut,taillepopulation);
