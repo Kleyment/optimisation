@@ -53,7 +53,7 @@ public class Main {
 					if (num < taillepopulation && num > -1) {
 						Solution s=algoGen.getIndividu(num);
 						System.out.println(s);
-						System.out.println(s.getEvaluation());
+						System.out.println("evaluation max : "+s.getEvaluation());
 						break;
 					} else {
 						System.out.println("Numéro invalide");
@@ -63,7 +63,7 @@ public class Main {
 			case 'm':
 				Solution s=algoGen.getMeilleurIndividu();
 				System.out.println(s);
-				System.out.println(s.getEvaluation());
+				System.out.println("evaluation max : "+s.getEvaluation());
 				break;
 			case 'r':
 				return;
@@ -102,7 +102,7 @@ public class Main {
 			case 's':
 				Solution s=recuitSim.getSolution();
 				System.out.println(s);
-				System.out.println(s.getEvaluation());
+				System.out.println("evaluation max : "+s.getEvaluation());
 				break;
 			case 'r':
 				return;
@@ -141,7 +141,7 @@ public class Main {
 			case 's':
 				Solution s=rechercheTab.getSolution();
 				System.out.println(s);
-				System.out.println(s.getEvaluation());
+				System.out.println("evaluation max : "+s.getEvaluation());
 				break;
 			case 'r':
 				return;
